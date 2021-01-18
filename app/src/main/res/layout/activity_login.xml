@@ -26,6 +26,7 @@
     </com.google.android.gms.common.SignInButton>
 
     <com.facebook.login.widget.LoginButton
+        android:id="@+id/btn_loginfa"
         android:layout_width="201dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
