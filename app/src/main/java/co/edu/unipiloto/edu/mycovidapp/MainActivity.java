@@ -1,6 +1,7 @@
 package co.edu.unipiloto.edu.mycovidapp;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -17,11 +18,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Button btnGPS;
     TextView tvUbicacion;
+    Button btn_salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvUbicacion= (TextView)findViewById(R.id.tvUbicacion);
         btnGPS=(Button)findViewById(R.id.button);
-
+        btn_salir= (Button) findViewById(R.id.btn_salir);
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            signOut();
+            }
+        });
         btnGPS.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -71,6 +87,17 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
         }
         }
+    }
+
+    private void signOut(){
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>(){
+            public void onComplete(@NonNull Task<Void> task) {
+                Intent intent= new Intent(MainActivity.this,LoginActivity.class);
+
+                startActivity(intent);
+                finish();            }
+        });
+
     }
 
 
