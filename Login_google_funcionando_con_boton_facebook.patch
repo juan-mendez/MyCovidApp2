@@ -1,0 +1,76 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 04adead8816a19cfbaf9a936ab5919ff27f50a32)
++++ app/build.gradle	(date 1610993860689)
+@@ -36,6 +36,7 @@
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+     implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
++    implementation 'com.facebook.android:facebook-login:8.1.0'
+     implementation 'com.google.firebase:firebase-auth:20.0.2'
+     testImplementation 'junit:junit:4.+'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision 04adead8816a19cfbaf9a936ab5919ff27f50a32)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1610993475855)
+@@ -1,6 +1,6 @@
+-#Fri Jan 15 13:31:37 COT 2021
++#Mon Jan 18 13:11:15 COT 2021
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision 04adead8816a19cfbaf9a936ab5919ff27f50a32)
++++ app/src/main/res/layout/activity_login.xml	(date 1610994287476)
+@@ -9,20 +9,33 @@
+     android:orientation="vertical"
+     tools:context=".LoginActivity">
+ 
++
+     <com.google.android.gms.common.SignInButton
+ 
+         android:id="@+id/btn_login"
+-        android:layout_width="258dp"
+-        android:layout_height="wrap_content"
++        android:layout_width="206dp"
++        android:layout_height="36dp"
+ 
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.496"
++        app:layout_constraintHorizontal_bias="0.497"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent">
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.64">
+ 
+     </com.google.android.gms.common.SignInButton>
+ 
++    <com.facebook.login.widget.LoginButton
++        android:layout_width="201dp"
++        android:layout_height="45dp"
++        android:layout_marginTop="28dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/btn_login"
++        tools:ignore="MissingConstraints">
++
++    </com.facebook.login.widget.LoginButton>
++
+     <ImageView
+         android:id="@+id/imageView6"
+         android:layout_width="205dp"
