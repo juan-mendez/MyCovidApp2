@@ -1,12 +1,10 @@
 package co.edu.unipiloto.edu.mycovidapp;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.login.widget.LoginButton;
@@ -16,9 +14,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 SignInButton btn_login;
@@ -30,7 +26,7 @@ private static final int RC_SIGN_IN=1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btn_loginFa=(LoginButton)findViewById(R.id.btn_loginfa);
-        btn_login= (SignInButton) findViewById(R.id.btn_login);
+        btn_login= (SignInButton) findViewById(R.id.btn_login_google);
 
         btn_loginFa.setOnClickListener(new View.OnClickListener() {
             @Override
