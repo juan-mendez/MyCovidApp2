@@ -2,4 +2,5 @@
     <string name="app_name">MyCovidApp</string>
     <string name="facebook_application_id" translatable="false">162837518648614</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb162837518648614</string>
+    <string name="title_activity_maps1">Map</string>
 </resources>

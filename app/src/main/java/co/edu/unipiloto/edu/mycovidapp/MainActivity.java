@@ -17,28 +17,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnGPS;
-    TextView tvUbicacion;
+    Button btnGPS, btn_miUbicacion;
+   // TextView tvUbicacion;
     Button btn_salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvUbicacion= (TextView)findViewById(R.id.tvUbicacion);
-        btnGPS=(Button)findViewById(R.id.button);
+
+      //  tvUbicacion = (TextView) findViewById(R.id.tvUbicacion);
+
+        btn_miUbicacion = (Button) findViewById(R.id.btn_miUbicacion);
+        btn_miUbicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MapsActivity1.class);
+                startActivity(intent);
+            }
+        });
+
         btn_salir= (Button) findViewById(R.id.btn_salir);
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,22 +51,24 @@ public class MainActivity extends AppCompatActivity {
             signOut();
             }
         });
+
+        btnGPS = (Button) findViewById(R.id.btn_reportarUbicacion);
         btnGPS.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 LocationManager locationManager = (LocationManager) MainActivity.this.getSystemService(Context.LOCATION_SERVICE);
-
                 LocationListener locationListener = new LocationListener()
                 {
-
                     public void onLocationChanged( Location location) {
-                        tvUbicacion.setText(""+location.getLatitude()+" "+location.getLongitude());
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(MainActivity.this, "Estamos ubicados en: \n"+location.getLatitude()+" "+location.getLongitude(), duration);
+                        toast.show();
+                      //  tvUbicacion.setText(""+location.getLatitude()+" "+location.getLongitude());
                     }
 
                     public void onStatusChanged(String provider, int status, Bundle extras){}
-
                     public void onProviderEnabled( String provider) { }
                     public void onProviderDisabled( String provider) { }
                 };
@@ -70,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         int permissionCheck= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-
         if(permissionCheck== PackageManager.PERMISSION_DENIED)
         {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -80,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             // permission for a specific feature to behave as expected. In this UI,
             // include a "cancel" or "no thanks" button that allows the user to
             // continue using your app without granting the permission.
-
         } else {
             // You can directly ask for the permission.
             // The registered ActivityResultCallback gets the result of this request.
@@ -88,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         }
         }
     }
+
+
 
     private void signOut(){
         AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>(){
