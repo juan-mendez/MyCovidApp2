@@ -16,7 +16,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -24,14 +23,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnGPS, btn_miUbicacion;
+    Button btnGPS, btn_miUbicacion, btn_chequeoSintomas;
    // TextView tvUbicacion;
     Button btn_salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
 
       //  tvUbicacion = (TextView) findViewById(R.id.tvUbicacion);
 
@@ -74,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
                 };
                 int permissionCheck= ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
+            }
+        });
+
+        btn_chequeoSintomas = (Button)findViewById(R.id.btn_chequeoSintomas);
+        btn_chequeoSintomas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChequeoSintomas.class);
+                startActivity(intent);
             }
         });
 

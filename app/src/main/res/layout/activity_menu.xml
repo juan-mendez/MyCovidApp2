@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
     android:padding="16dp"
     tools:context=".MainActivity">
 
@@ -74,7 +73,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="411dp"
         android:background="@drawable/button_rounded"
-        android:text="Chequeo sintomas"
+        android:text="Chequeo rapido"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_salir"
