@@ -1,5 +1,6 @@
 package co.edu.unipiloto.edu.mycovidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,17 +14,25 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 
 public class LoginActivity extends AppCompatActivity {
 SignInButton btn_login;
 LoginButton btn_loginFa;
+DatabaseReference db;
+String provider;
 //List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.FacebookBuilder().build(),new AuthUI.IdpConfig.GoogleBuilder().build());
 private static final int RC_SIGN_IN=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_login);
         btn_loginFa=(LoginButton)findViewById(R.id.btn_loginfa);
         btn_login= (SignInButton) findViewById(R.id.btn_login_google);
@@ -31,6 +40,7 @@ private static final int RC_SIGN_IN=1;
         btn_loginFa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                provider="Facebook";
                 signIn(new AuthUI.IdpConfig.FacebookBuilder().build());
             }
         });
@@ -38,6 +48,7 @@ private static final int RC_SIGN_IN=1;
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                provider="Google";
                 signIn(new AuthUI.IdpConfig.GoogleBuilder().build());
             }
         });
@@ -60,9 +71,32 @@ private static final int RC_SIGN_IN=1;
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this,"Bienvenido@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
-                Intent intent= new Intent(this,MainActivity.class);
-                startActivity(intent);
-                finish();
+
+
+                db.child("Users").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child(user.getUid()).exists()){
+                            Intent intent= new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
+                            db.child("Users").child(user.getUid()).child("PersonalInfo").child("proveedor").setValue(provider);
+
+
+                        }else{
+                            Intent intent= new Intent(LoginActivity.this,UsersData.class);
+                            startActivity(intent);
+
+                        }
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
             } else {
 
                 Toast.makeText(this,"Error encontrado ${response!!.getError()!!.getErrorCode()!!}",Toast.LENGTH_LONG).show();
