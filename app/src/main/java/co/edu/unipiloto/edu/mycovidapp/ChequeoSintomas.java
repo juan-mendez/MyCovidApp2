@@ -47,6 +47,8 @@ public class ChequeoSintomas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+
                 if (tbFiebre.isChecked() || tbDolorGarganta.isChecked() || tbTos.isChecked() || tbDificultadRespirar.isChecked() ||
                 tbPerdidaGustoOlfato.isChecked() || tbFatiga.isChecked() || tbCongestionNasal.isChecked()){
                     Toast.makeText(ChequeoSintomas.this,"Tomar distancia de sus cercanos y realizarse una prueba para descartar si es positivo de Covid-19.",Toast.LENGTH_LONG).show();
