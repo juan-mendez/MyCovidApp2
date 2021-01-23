@@ -10,7 +10,7 @@
         android:id="@+id/emailText"
         android:layout_width="252dp"
         android:layout_height="32dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="44dp"
         android:editable="false"
         android:hint="email"
         android:textSize="10sp"
@@ -48,7 +48,7 @@
         android:layout_width="252dp"
         android:layout_height="32dp"
         android:layout_marginTop="28dp"
-        android:hint="18"
+        android:hint="edad"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -60,7 +60,7 @@
         android:layout_width="252dp"
         android:layout_height="32dp"
         android:layout_marginTop="28dp"
-        android:hint="3163929427"
+        android:hint="telefono"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -71,12 +71,35 @@
         android:id="@+id/btn_confirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/fui_idp_button_background_anonymous"
         android:text="Confirmar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneText"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_group" />
+
+    <RadioGroup
+        android:id="@+id/btn_group"
+        android:layout_width="245dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneText">
+
+        <RadioButton
+            android:id="@+id/btn_user"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="Usuario" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+            android:text="Eps" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

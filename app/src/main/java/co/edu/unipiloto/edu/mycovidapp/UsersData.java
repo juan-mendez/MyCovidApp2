@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ public class UsersData extends AppCompatActivity {
     String cedula;
     String edad;
     String phone;
+    RadioGroup btn_group;
     int state=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,17 @@ public class UsersData extends AppCompatActivity {
         cedulaText=(EditText)findViewById(R.id.cedulaText);
         edadText=(EditText)findViewById(R.id.edadText);
         phoneText=(EditText)findViewById(R.id.phoneText);
+        btn_group=(RadioGroup)findViewById(R.id.btn_group);
+
         emailText.setText(user.getEmail());
         nameText.setText(user.getDisplayName());
 
+        btn_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            }
+        });
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
