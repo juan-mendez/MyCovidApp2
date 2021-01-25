@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void signOut(){
+    private  void signOut(){
         AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>(){
             public void onComplete(@NonNull Task<Void> task) {
                 Intent intent= new Intent(MainActivity.this,LoginActivity.class);

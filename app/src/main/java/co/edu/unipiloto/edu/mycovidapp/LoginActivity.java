@@ -73,21 +73,42 @@ private static final int RC_SIGN_IN=1;
                 Toast.makeText(this,"Bienvenido@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
 
 
-                db.child("Users").addValueEventListener(new ValueEventListener() {
+                db.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.child(user.getUid()).exists()){
-                            Intent intent= new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
-                            db.child("Users").child(user.getUid()).child("PersonalInfo").child("proveedor").setValue(provider);
+                        if(snapshot.child("Entidades").child(user.getUid()).exists())
+                        {
+                            String tipo =snapshot.child("Entidades").child(user.getUid()).child("tipo").getValue().toString();
+                            switch (tipo)
+                            {
+                                case "hospital":
+                                    startActivity(new Intent(getApplicationContext(), HospitalMain.class));
+                                    finish();
+                                    break;
+                                case "seguimiento":
+                                    startActivity(new Intent(getApplicationContext(), SeguimientoDeContagiosMain.class));
+                                    finish();
+                                    break;
+                                case "decisiones":
+                                    startActivity(new Intent(getApplicationContext(), TomaDeDecisionesMain.class));
+                                    finish();
+                                    break;
+
+                            }
+                        }else {
+                            if (snapshot.child("Users").child(user.getUid()).exists()) {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                db.child("Users").child(user.getUid()).child("PersonalInfo").child("proveedor").setValue(provider);
 
 
-                        }else{
-                            Intent intent= new Intent(LoginActivity.this,UsersData.class);
-                            startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(LoginActivity.this, UsersData.class);
+                                startActivity(intent);
 
+                            }
+                            finish();
                         }
-                        finish();
                     }
 
                     @Override

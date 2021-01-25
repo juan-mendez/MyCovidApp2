@@ -25,20 +25,44 @@ public class Principal extends AppCompatActivity {
     protected void onActivityResult() {
 
         if (authUser.getCurrentUser() != null) {
-            db.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.child(authUser.getCurrentUser().getUid()).exists()){
-                        Intent intent= new Intent(Principal.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
+
+                    if(snapshot.child("Entidades").child(authUser.getCurrentUser().getUid()).exists()) {
 
 
-                    }else{
-                        //String provider= getIntent().getExtras().getString("Proveedor");
-                        Intent intent= new Intent(getApplicationContext(),UsersData.class);
-                        startActivity(intent);
-                        finish();
+                            String tipo = snapshot.child("Entidades").child(authUser.getCurrentUser().getUid()).child("tipo").getValue().toString();
+                            switch (tipo) {
+                                case "hospital":
+                                    startActivity(new Intent(getApplicationContext(), HospitalMain.class));
+                                    finish();
+                                    break;
+                                case "seguimiento":
+                                    startActivity(new Intent(getApplicationContext(), SeguimientoDeContagiosMain.class));
+                                    finish();
+                                    break;
+                                case "decisiones":
+                                    startActivity(new Intent(getApplicationContext(), TomaDeDecisionesMain.class));
+                                    finish();
+                                    break;
+
+                            }
+
+                    }else {
+                        if(snapshot.child("Users").child(authUser.getCurrentUser().getUid()).exists()){
+                            Intent intent= new Intent(Principal.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+
+                        }else{
+                            //String provider= getIntent().getExtras().getString("Proveedor");
+                            Intent intent= new Intent(getApplicationContext(),UsersData.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
 
                 }
@@ -48,8 +72,6 @@ public class Principal extends AppCompatActivity {
 
                 }
             });
-
-
 
         } else {
             Intent intent= new Intent(Principal.this,LoginActivity.class);
