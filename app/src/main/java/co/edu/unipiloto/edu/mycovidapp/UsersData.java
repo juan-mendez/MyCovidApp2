@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,12 +31,13 @@ public class UsersData extends AppCompatActivity {
     String cedula;
     String edad;
     String phone;
+    String fecha;
     RadioGroup btn_group;
     int state=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         db = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_users_data);
         btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
         emailText=(EditText)findViewById(R.id.emailText);
@@ -56,6 +60,9 @@ public class UsersData extends AppCompatActivity {
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Date date = new Date();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                fecha= dateFormat.format(date)+"";
                 cedula= cedulaText.getText().toString();
                 edad=edadText.getText().toString();
                 phone=phoneText.getText().toString();
@@ -67,6 +74,7 @@ public class UsersData extends AppCompatActivity {
                 mapuser.put("cedula",cedula);
                 mapuser.put("edad",edad);
                 mapuser.put("phone",phone);
+                mapuser.put("fecha",fecha);
 
                 db.child("Users").child(user.getUid()).child("PersonalInfo").setValue(mapuser);
                 finish();

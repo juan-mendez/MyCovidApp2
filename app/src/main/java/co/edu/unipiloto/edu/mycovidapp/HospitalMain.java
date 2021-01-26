@@ -26,14 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class HospitalMain extends AppCompatActivity {
-  private   Button btn_Users;
-  private   Button btn_Consultar;
-  private Button btn_search;
-  private EditText txt_consul;
-  private ListView listUsers;
-  private ArrayList<String> cedulas;
-  private DatabaseReference db;
-  private Button btn_salir;
+    private   Button btn_Users;
+    private   Button btn_Consultar;
+    private Button btn_search;
+    private EditText txt_consul;
+    private ListView listUsers;
+    private ArrayList<String> cedulas;
+    private DatabaseReference db;
+    private Button btn_salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class HospitalMain extends AppCompatActivity {
                 //cedulas.add(snapshot.child("PBkf6G1Wo7TTchA9OZXkv28ysFB2").child("PersonalInfo").child("cedula").getValue().toString());
                 ArrayAdapter<String>listAdapter= new ArrayAdapter<String>(HospitalMain.this, android.R.layout.simple_list_item_1,cedulas);
                 listUsers.setAdapter(listAdapter);
-                
+
 
             }
 
@@ -91,7 +91,7 @@ public class HospitalMain extends AppCompatActivity {
                     listUsers.setVisibility(View.VISIBLE);
                 }
 
-               // Toast.makeText(HospitalMain.this, "esta "+ listUsers.getVisibility(), Toast.LENGTH_LONG).show();
+                // Toast.makeText(HospitalMain.this, "esta "+ listUsers.getVisibility(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -108,7 +108,7 @@ public class HospitalMain extends AppCompatActivity {
                     listUsers.setVisibility(View.INVISIBLE);
                 }
 
-               // Toast.makeText(HospitalMain.this, "esta "+ txt_consual.getVisibility(), Toast.LENGTH_LONG).show();
+                // Toast.makeText(HospitalMain.this, "esta "+ txt_consual.getVisibility(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -117,6 +117,7 @@ public class HospitalMain extends AppCompatActivity {
         listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                startActivity(new Intent(getApplicationContext(),UserSintomas.class).putExtra("cedula",cedulas.get(position)));
                 Toast.makeText(HospitalMain.this, "Has pulsado: "+ cedulas.get(position), Toast.LENGTH_LONG).show();
             }
         });
