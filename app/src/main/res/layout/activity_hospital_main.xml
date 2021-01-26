@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/amp_como_afrontar_y_superar_la_crisis_del_covid_19_desde_la_industria"
+    android:background="@drawable/positive1"
     tools:context=".HospitalMain">
 
     <LinearLayout
