@@ -7,30 +7,16 @@
     android:background="?android:attr/galleryItemBackground"
     tools:context=".UserSintomas">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:background="@android:drawable/button_onoff_indicator_off"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="334dp"
-        android:layout_height="224dp"
-        android:layout_marginTop="235dp"
+        android:layout_width="329dp"
+        android:layout_height="242dp"
+        android:layout_marginTop="95dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,38 +135,32 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_congestionNasal"
+                    android:id="@+id/txt_S1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Congestión Nasal"
+                    android:hint=" "
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txt_dificultadRespirar"
+                    android:id="@+id/txt_S2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Dificultad para Respirar"
+                    android:hint=" "
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txt_dolorGarganta"
+                    android:id="@+id/txt_S3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Dolor de Garganta"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txt_fatiga"
+                    android:id="@+id/txt_S4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Fatiga"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
@@ -192,29 +172,23 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_fiebre"
+                    android:id="@+id/txt_S5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Fiebre mayor a 38°"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txt_perdidaGustoOlfato"
+                    android:id="@+id/txt_S6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Perdida del Olfato o Gusto"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txt_tos"
+                    android:id="@+id/txt_S7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:hint=" Tos"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#A6FFFFFF" />
 
@@ -222,9 +196,7 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -252,6 +224,12 @@
             android:layout_height="2dp"
             android:background="@drawable/border"
             android:orientation="horizontal"></LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_examen"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:textColor="#FFFEFE" />
     </LinearLayout>
 
     <ImageView
@@ -262,7 +240,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533"
+        app:layout_constraintVertical_bias="0.512"
         app:srcCompat="@drawable/com_facebook_profile_picture_blank_square" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="259dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_reportar"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@android:drawable/button_onoff_indicator_off"
+            android:text="Reportar" />
+
+        <Button
+            android:id="@+id/btn_notificar"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@android:drawable/button_onoff_indicator_off"
+            android:text="Notificar" />
+
+        <Button
+            android:id="@+id/btn_citar"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@android:drawable/button_onoff_indicator_off"
+            android:text="Citar" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

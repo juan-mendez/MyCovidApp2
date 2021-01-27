@@ -23,15 +23,8 @@ public class UsersData extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     Button btn_confirmar;
     DatabaseReference db;
-    EditText emailText;
-    EditText nameText;
-    EditText cedulaText;
-    EditText edadText;
-    EditText phoneText;
-    String cedula;
-    String edad;
-    String phone;
-    String fecha;
+    EditText emailText, nameText, cedulaText, edadText, phoneText, localidadText;
+    String cedula, edad, phone, fecha;
     RadioGroup btn_group;
     int state=0;
     @Override
@@ -39,22 +32,21 @@ public class UsersData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_users_data);
-        btn_confirmar=(Button)findViewById(R.id.btn_confirmar);
-        emailText=(EditText)findViewById(R.id.emailText);
-        nameText=(EditText)findViewById(R.id.nameText);
-        cedulaText=(EditText)findViewById(R.id.cedulaText);
-        edadText=(EditText)findViewById(R.id.edadText);
-        phoneText=(EditText)findViewById(R.id.phoneText);
-        btn_group=(RadioGroup)findViewById(R.id.btn_group);
+        btn_confirmar = (Button)findViewById(R.id.btn_confirmar);
+        emailText = (EditText)findViewById(R.id.emailText);
+        nameText = (EditText)findViewById(R.id.nameText);
+        cedulaText = (EditText)findViewById(R.id.cedulaText);
+        edadText = (EditText)findViewById(R.id.edadText);
+        phoneText = (EditText)findViewById(R.id.phoneText);
+        localidadText = (EditText)findViewById(R.id.localidadText);
+        btn_group = (RadioGroup)findViewById(R.id.btn_group);
 
         emailText.setText(user.getEmail());
         nameText.setText(user.getDisplayName());
 
         btn_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-            }
+            public void onCheckedChanged(RadioGroup group, int checkedId) { }
         });
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
@@ -62,10 +54,10 @@ public class UsersData extends AppCompatActivity {
             public void onClick(View view) {
                 Date date = new Date();
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                fecha= dateFormat.format(date)+"";
-                cedula= cedulaText.getText().toString();
-                edad=edadText.getText().toString();
-                phone=phoneText.getText().toString();
+                fecha = dateFormat.format(date)+"";
+                cedula = cedulaText.getText().toString();
+                edad = edadText.getText().toString();
+                phone = phoneText.getText().toString();
 
                 Map<String,Object>mapuser=new HashMap<>();
                 mapuser.put("name",user.getDisplayName());
@@ -74,6 +66,7 @@ public class UsersData extends AppCompatActivity {
                 mapuser.put("cedula",cedula);
                 mapuser.put("edad",edad);
                 mapuser.put("phone",phone);
+                mapuser.put("localidad", localidadText.getText().toString());
                 mapuser.put("fecha",fecha);
 
                 db.child("Users").child(user.getUid()).child("PersonalInfo").setValue(mapuser);

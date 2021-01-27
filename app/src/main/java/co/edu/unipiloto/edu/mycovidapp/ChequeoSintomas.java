@@ -1,8 +1,10 @@
 package co.edu.unipiloto.edu.mycovidapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -20,7 +22,8 @@ import java.util.Map;
 public class ChequeoSintomas extends AppCompatActivity {
 
     ToggleButton tbFiebre, tbDolorGarganta, tbTos, tbDificultadRespirar, tbPerdidaGustoOlfato, tbFatiga, tbCongestionNasal;
-    Button  btn_chequear;
+    Button btn_chequear;
+    ImageButton ib_perfil, ib_mapsmenu;
     DatabaseReference db;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -31,6 +34,25 @@ public class ChequeoSintomas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chequeo_sintomas);
         db = FirebaseDatabase.getInstance().getReference();
+
+
+        ib_perfil = (ImageButton) findViewById(R.id.ib_perfil);
+        ib_perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ib_mapsmenu = (ImageButton)findViewById(R.id.ib_mapsmenu);
+        ib_mapsmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MapsMenu.class);
+                startActivity(intent);
+            }
+        });
 
 
         tbFiebre = (ToggleButton)findViewById(R.id.tbFiebre);
@@ -46,11 +68,8 @@ public class ChequeoSintomas extends AppCompatActivity {
         btn_chequear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 if (tbFiebre.isChecked() || tbDolorGarganta.isChecked() || tbTos.isChecked() || tbDificultadRespirar.isChecked() ||
-                tbPerdidaGustoOlfato.isChecked() || tbFatiga.isChecked() || tbCongestionNasal.isChecked()){
+                        tbPerdidaGustoOlfato.isChecked() || tbFatiga.isChecked() || tbCongestionNasal.isChecked()){
                     Toast.makeText(ChequeoSintomas.this,"Tomar distancia de sus cercanos y realizarse una prueba para descartar si es positivo de Covid-19.",Toast.LENGTH_LONG).show();
                 }
 
@@ -65,10 +84,9 @@ public class ChequeoSintomas extends AppCompatActivity {
 
                 db.child("Sintomas").child(user.getUid()).setValue(mapSintomas);
 
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
-
     }
-
-
 }

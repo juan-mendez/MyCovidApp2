@@ -23,7 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HospitalMain extends AppCompatActivity {
     private   Button btn_Users;
@@ -34,6 +36,7 @@ public class HospitalMain extends AppCompatActivity {
     private ArrayList<String> cedulas;
     private DatabaseReference db;
     private Button btn_salir;
+    String cedula="0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,37 @@ public class HospitalMain extends AppCompatActivity {
             }
         });
 
+        btn_search.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String[] comprueba=txt_consul.getText().toString().split("/");
+
+                if(comprueba.length>1 ) {
+                    startActivity(new Intent(HospitalMain.this, PersonasConExamen.class));
+                }else{
+                    db.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot ds: snapshot.getChildren()){
+                                if(ds.child("PersonalInfo").child("name").getValue().toString().equals(txt_consul.getText().toString())){
+                                   cedula= ds.child("PersonalInfo").child("cedula").getValue().toString();
+                                    startActivity(new Intent(HospitalMain.this, UserSintomas.class).putExtra("cedula",cedula));
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                }
+            }
+        });
 
 
         listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {

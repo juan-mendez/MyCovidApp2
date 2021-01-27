@@ -1,12 +1,12 @@
 package co.edu.unipiloto.edu.mycovidapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.login.widget.LoginButton;
 import com.firebase.ui.auth.AuthUI;
@@ -22,13 +22,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 
+import co.edu.unipiloto.edu.mycovidapp.HospitalMain;
+import co.edu.unipiloto.edu.mycovidapp.MainActivity;
+import co.edu.unipiloto.edu.mycovidapp.R;
+import co.edu.unipiloto.edu.mycovidapp.SeguimientoDeContagiosMain;
+import co.edu.unipiloto.edu.mycovidapp.TomaDeDecisionesMain;
+import co.edu.unipiloto.edu.mycovidapp.UsersData;
+
 public class LoginActivity extends AppCompatActivity {
-SignInButton btn_login;
-LoginButton btn_loginFa;
-DatabaseReference db;
-String provider;
-//List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.FacebookBuilder().build(),new AuthUI.IdpConfig.GoogleBuilder().build());
-private static final int RC_SIGN_IN=1;
+    SignInButton btn_login;
+    LoginButton btn_loginFa;
+    DatabaseReference db;
+    String provider;
+    //List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.FacebookBuilder().build(),new AuthUI.IdpConfig.GoogleBuilder().build());
+    private static final int RC_SIGN_IN=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +61,8 @@ private static final int RC_SIGN_IN=1;
         });
     }
     private void signIn(AuthUI.IdpConfig provedor){
-
         Intent signInIntent=AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(Collections.singletonList(provedor)).build();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
     }
 
     @Override
@@ -71,7 +76,6 @@ private static final int RC_SIGN_IN=1;
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this,"Bienvenido@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
-
 
                 db.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -93,33 +97,24 @@ private static final int RC_SIGN_IN=1;
                                     startActivity(new Intent(getApplicationContext(), TomaDeDecisionesMain.class));
                                     finish();
                                     break;
-
                             }
                         }else {
                             if (snapshot.child("Users").child(user.getUid()).exists()) {
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 db.child("Users").child(user.getUid()).child("PersonalInfo").child("proveedor").setValue(provider);
-
-
                             } else {
                                 Intent intent = new Intent(LoginActivity.this, UsersData.class);
                                 startActivity(intent);
-
                             }
                             finish();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
             } else {
-
                 Toast.makeText(this,"Error encontrado ${response!!.getError()!!.getErrorCode()!!}",Toast.LENGTH_LONG).show();
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check

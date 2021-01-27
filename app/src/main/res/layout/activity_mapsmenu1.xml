@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/ib_miUbicacion"
+        android:layout_width="320dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/grey"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/location_mapa" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Donde estamos?"
+        android:textColor="@color/teal_200"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/ib_miUbicacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_miLocacion"
+        android:layout_width="320dp"
+        android:layout_height="220dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/grey"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_miUbicacion"
+        app:layout_constraintVertical_bias="0.482"
+        app:srcCompat="@drawable/ubicacion_mapa" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Reportar nuestra ubicacion"
+        android:textColor="@color/teal_200"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/ib_miLocacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="108dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_chequeoSintomas"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_margin"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/sintomas" />
+
+        <ImageButton
+            android:id="@+id/ib_mapsmenu"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_marginselected"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/mark_map_logo" />
+
+        <ImageButton
+            android:id="@+id/ib_perfil"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_margin"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/usuario" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

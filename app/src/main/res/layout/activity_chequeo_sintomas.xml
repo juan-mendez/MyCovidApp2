@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2C2C2C"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Chequeo rapido"
+        android:textColor="#FFD61E5D"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,10 +24,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="56dp"
         android:text="Selecciona sintomas que presentas:"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,13 +38,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="ToggleButton"
+        android:textOff="No presento"
+        android:textOn="Si presento"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.734"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:textOff="No presento"
-        android:textOn="Si presento"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -51,6 +55,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Fiebre mayor a 38°"
+        android:textColor="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Dolor de garganta"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -71,10 +77,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="tbDolorGarganta"
-        app:layout_constraintStart_toStartOf="@id/tbFiebre"
-        app:layout_constraintTop_toBottomOf="@+id/tbFiebre"
         android:textOff="No presento"
-        android:textOn="Si presento"/>
+        android:textOn="Si presento"
+        app:layout_constraintStart_toStartOf="@id/tbFiebre"
+        app:layout_constraintTop_toBottomOf="@+id/tbFiebre" />
 
     <TextView
         android:id="@+id/textView5"
@@ -82,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Tos"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -91,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Dificultad para respirar"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -100,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Perdida de gusto y/o olfato"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -109,6 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Fatiga"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -118,6 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Congestion nasal"
+        android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -128,11 +139,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:text="tbTos"
+        android:textOff="No presento"
+        android:textOn="Si presento"
         app:layout_constraintBottom_toTopOf="@+id/tbDificultadRespirar"
         app:layout_constraintStart_toStartOf="@+id/tbDolorGarganta"
-        app:layout_constraintTop_toBottomOf="@+id/tbDolorGarganta"
-        android:textOff="No presento"
-        android:textOn="Si presento"/>
+        app:layout_constraintTop_toBottomOf="@+id/tbDolorGarganta" />
 
     <ToggleButton
         android:id="@+id/tbDificultadRespirar"
@@ -140,10 +151,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="tbDificultadRespirar"
-        app:layout_constraintStart_toStartOf="@+id/tbTos"
-        app:layout_constraintTop_toBottomOf="@+id/tbTos"
         android:textOff="No presento"
-        android:textOn="Si presento"/>
+        android:textOn="Si presento"
+        app:layout_constraintStart_toStartOf="@+id/tbTos"
+        app:layout_constraintTop_toBottomOf="@+id/tbTos" />
 
     <ToggleButton
         android:id="@+id/tbPerdidaGustoOlfato"
@@ -151,10 +162,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="tbPerdidaGustoOlfato"
-        app:layout_constraintStart_toStartOf="@+id/tbDificultadRespirar"
-        app:layout_constraintTop_toBottomOf="@+id/tbDificultadRespirar"
         android:textOff="No presento"
-        android:textOn="Si presento"/>
+        android:textOn="Si presento"
+        app:layout_constraintStart_toStartOf="@+id/tbDificultadRespirar"
+        app:layout_constraintTop_toBottomOf="@+id/tbDificultadRespirar" />
 
     <ToggleButton
         android:id="@+id/tbFatiga"
@@ -163,11 +174,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:text="tbFatiga"
+        android:textOff="No presento"
+        android:textOn="Si presento"
         app:layout_constraintBottom_toTopOf="@+id/tbCongestionNasal"
         app:layout_constraintStart_toStartOf="@+id/tbPerdidaGustoOlfato"
-        app:layout_constraintTop_toBottomOf="@+id/tbPerdidaGustoOlfato"
-        android:textOff="No presento"
-        android:textOn="Si presento"/>
+        app:layout_constraintTop_toBottomOf="@+id/tbPerdidaGustoOlfato" />
 
     <ToggleButton
         android:id="@+id/tbCongestionNasal"
@@ -175,19 +186,60 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="tbCongestionNasal"
-        app:layout_constraintStart_toStartOf="@+id/tbFatiga"
-        app:layout_constraintTop_toBottomOf="@+id/tbFatiga"
         android:textOff="No presento"
-        android:textOn="Si presento"/>
+        android:textOn="Si presento"
+        app:layout_constraintStart_toStartOf="@+id/tbFatiga"
+        app:layout_constraintTop_toBottomOf="@+id/tbFatiga" />
 
     <Button
         android:id="@+id/btn_chequear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="124dp"
         android:text="chequear"
+        android:textColor="@color/white"
+        android:background="@drawable/button_rounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="108dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_chequeoSintomas"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_marginselected"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/sintomas" />
+
+        <ImageButton
+            android:id="@+id/ib_mapsmenu"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_margin"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/mark_map_logo" />
+
+        <ImageButton
+            android:id="@+id/ib_perfil"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ib_margin"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/usuario" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

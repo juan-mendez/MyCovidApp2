@@ -66,7 +66,7 @@
         android:layout_width="320dp"
         android:layout_height="61dp"
         android:background="#88FFFFFF"
-        android:hint="Cedula de Usuario"
+        android:hint="Nombre Usuario o Fecha"
 
         android:shadowColor="#000000"
         android:textSize="18sp"

@@ -15,10 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".UserSintomas"></activity>
+        <activity android:name=".PersonasConExamen"></activity>
+        <activity android:name=".ConfPerfil" />
+        <activity android:name=".UserSintomas" />
         <activity android:name=".SeguimientoDeContagiosMain" />
         <activity android:name=".TomaDeDecisionesMain" />
-        <activity android:name=".HospitalMain"></activity>
+        <activity android:name=".HospitalMain" />
         <activity android:name=".UsersData" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
