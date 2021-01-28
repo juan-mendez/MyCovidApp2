@@ -97,18 +97,10 @@ public class ConfPerfil extends AppCompatActivity {
                 db.child("Users").child(user.getUid()).child("PersonalInfo").setValue(mapuser);
                 finish();
 
-
                 Toast.makeText(ConfPerfil.this, "Datos actualizados", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-
-        //tvE_localidad.setText(user.);
-
-
-
     }
-
-
 }

@@ -11,56 +11,86 @@
         android:id="@+id/ib_miUbicacion"
         android:layout_width="320dp"
         android:layout_height="220dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="8dp"
         android:background="@color/grey"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/location_mapa" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="¿Donde estamos?"
         android:textColor="@color/teal_200"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/ib_miUbicacion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/ib_miLocacion"
-        android:layout_width="320dp"
-        android:layout_height="220dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="180dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/grey"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ib_miUbicacion"
-        app:layout_constraintVertical_bias="0.482"
         app:srcCompat="@drawable/ubicacion_mapa" />
+
+    <ImageButton
+        android:id="@+id/ib_recorrido"
+        android:layout_width="180dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="28dp"
+        android:background="@color/grey"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/recordido" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
         android:text="Reportar nuestra ubicacion"
         android:textColor="@color/teal_200"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/ib_miLocacion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.673"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_miUbicacion" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="159dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="Nuestro recorrido"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ib_recorrido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_miUbicacion" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="379dp"
         android:layout_height="108dp"
         android:orientation="horizontal"

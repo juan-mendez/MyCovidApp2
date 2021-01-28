@@ -8,48 +8,6 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <!--    <Button
-        android:id="@+id/btn_reportarUbicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/button_rounded"
-        android:text="Reportar ubicacion"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_miUbicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/button_rounded"
-        android:text="Mi ubicacion"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_reportarUbicacion" />
-
-    <Button
-        android:id="@+id/btn_chequeoSintomas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/button_rounded"
-        android:text="Chequeo rapido"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_miUbicacion" />
--->
-
     <Button
         android:id="@+id/btn_salir"
         android:layout_width="wrap_content"
@@ -67,10 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_rounded"
+        android:padding="8dp"
         android:text="Configurar perfil"
         android:textColor="@color/white"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_salir"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -118,9 +76,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="My CovidApp"
-        android:textStyle="bold"
         android:textColor="@color/pink"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_datos"
         app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,4 +106,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

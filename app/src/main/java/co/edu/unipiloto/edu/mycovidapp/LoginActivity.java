@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Toast.makeText(this,"Bienvenido@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Bienvenid@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
 
                 db.addValueEventListener(new ValueEventListener() {
                     @Override

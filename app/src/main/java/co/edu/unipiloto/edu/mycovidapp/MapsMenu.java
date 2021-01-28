@@ -8,29 +8,48 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class MapsMenu extends AppCompatActivity {
-    ImageButton ib_miUbicacion, ib_miLocacion, ib_chequeoSintomas, ib_perfil;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapsMenu extends AppCompatActivity {
+    ImageButton ib_miUbicacion, ib_miLocacion,ib_recorrido, ib_chequeoSintomas, ib_perfil;
+
+
+    double lat = 0.0, lon=0.0;
+    DatabaseReference db;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapsmenu1);
+        db = FirebaseDatabase.getInstance().getReference();
 
         ib_miUbicacion = (ImageButton) findViewById(R.id.ib_miUbicacion);
         ib_miUbicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity1.class);
+                Intent intent = new Intent(getApplicationContext(),MapsActivity1.class);
                 startActivity(intent);
             }
         });
@@ -39,20 +58,26 @@ public class MapsMenu extends AppCompatActivity {
         ib_miLocacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocationManager locationManager = (LocationManager) MapsMenu.this.getSystemService(Context.LOCATION_SERVICE);
-                LocationListener locationListener = new LocationListener(){
 
-                    public void onLocationChanged( Location location) {
-                        Toast.makeText(MapsMenu.this, "Estamos ubicados en: \n"
-                                +location.getLatitude()+" "
-                                +location.getLongitude(), Toast.LENGTH_SHORT).show();
+                Map<String,Object> mapUbicacion =new HashMap<>();
+                LocationManager locationManager = (LocationManager) MapsMenu.this.getSystemService(Context.LOCATION_SERVICE);
+                Time ahoraTiempo = new Time(Time.getCurrentTimezone());
+
+                LocationListener locationListener = new LocationListener(){
+                    public void onLocationChanged(Location location) {
+                        lat = location.getLatitude();
+                        lon = location.getLongitude();
+                        db.child("Users").child(user.getUid()).child("PersonalInfo").child("ubicacion").setValue(lat+";"+lon);
+
+                        ahoraTiempo.setToNow();
+                        String fecha = ahoraTiempo.monthDay + "-" + ahoraTiempo.month+1 + "-" + ahoraTiempo.year;
+                        mapUbicacion.put(ahoraTiempo.hour+":"+ahoraTiempo.minute, fecha +"/"+ahoraTiempo.hour+":"+ahoraTiempo.minute+"/"+ lat+";"+lon);
+                        db.child("Ubicacion").child(user.getUid()).setValue(mapUbicacion);
                     }
 
-                    public void onStatusChanged(String provider, int status, Bundle extras){}
-                    public void onProviderEnabled( String provider) { }
-                    public void onProviderDisabled( String provider) { }
                 };
-
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
                 int permissionCheck= ContextCompat.checkSelfPermission(MapsMenu.this, Manifest.permission.ACCESS_FINE_LOCATION);
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
             }
@@ -60,16 +85,20 @@ public class MapsMenu extends AppCompatActivity {
         int permissionCheck= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         if(permissionCheck== PackageManager.PERMISSION_DENIED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // In an educational UI, explain to the user why your app requires this
-                // permission for a specific feature to behave as expected. In this UI,
-                // include a "cancel" or "no thanks" button that allows the user to
-                // continue using your app without granting the permission.
             } else {
-                // You can directly ask for the permission.
-                // The registered ActivityResultCallback gets the result of this request.
                 ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
             }
         }
+
+        ib_recorrido = (ImageButton)findViewById(R.id.ib_recorrido);
+        ib_recorrido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RecorridoMapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         ib_chequeoSintomas = (ImageButton)findViewById(R.id.ib_chequeoSintomas);
@@ -89,8 +118,5 @@ public class MapsMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }
