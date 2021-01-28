@@ -85,6 +85,7 @@ public class UserSintomas extends AppCompatActivity {
                         txt_cedula.setText(txt_cedula.getText()+" "+cedula);
                         txt_age.setText(txt_age.getText()+" "+ds.child("PersonalInfo").child("edad").getValue().toString());
                         txt_phone.setText(txt_phone.getText()+" "+ds.child("PersonalInfo").child("phone").getValue().toString());
+                        txt_zona.setText(txt_zona.getText()+" "+ds.child("PersonalInfo").child("localidad").getValue().toString());
                         if (ds.child("PersonalInfo").child("estado").getValue().toString().equals("0")) {
                             txt_state.setText(txt_state.getText() + " " + "Negativo" );
                         }else{
@@ -146,7 +147,8 @@ public class UserSintomas extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         int dias=(int) ((fechaActual.getTime()-fechaExam.getTime())/86400000);
-                     txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", Llleva en revisión "+ dias+ " días");
+                     txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", no ha sido entregado y" +
+                             " lleva en revisión "+ dias+ " días");
                     }
                 }else {
                     txt_examen.setText("El usuario no ha tomado el examen");

@@ -122,7 +122,8 @@ public class HospitalMain extends AppCompatActivity {
                 String[] comprueba=txt_consul.getText().toString().split("/");
 
                 if(comprueba.length>1 ) {
-                    startActivity(new Intent(HospitalMain.this, PersonasConExamen.class));
+
+                    startActivity(new Intent(HospitalMain.this, PersonasConExamen.class).putExtra("fecha",txt_consul.getText().toString()));
                 }else{
                     db.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="329dp"
-        android:layout_height="242dp"
+        android:layout_width="333dp"
+        android:layout_height="270dp"
         android:layout_marginTop="95dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -228,7 +228,7 @@
         <TextView
             android:id="@+id/txt_examen"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="56dp"
             android:textColor="#FFFEFE" />
     </LinearLayout>
 
@@ -266,7 +266,8 @@
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:background="@android:drawable/button_onoff_indicator_off"
-            android:text="Notificar" />
+            android:text="Notificar"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btn_citar"
