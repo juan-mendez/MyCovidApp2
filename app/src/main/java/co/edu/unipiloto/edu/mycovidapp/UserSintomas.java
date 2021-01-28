@@ -7,9 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,8 +19,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.time.LocalDate; // O también LocalDate
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -133,9 +129,9 @@ public class UserSintomas extends AppCompatActivity {
                 }
                 if(snapshot.child("Examen").child(id).exists()){
                     if (snapshot.child("Examen").child(id).child("entrega").getValue().toString().equals("True")){
-                    txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", fue entregado el  "+
-                            snapshot.child("Examen").child(id).child("fechaEntrega").getValue().toString()+", con un resultado de "+
-                            snapshot.child("Examen").child(id).child("resultado").getValue().toString()+" para covid");
+                        txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", fue entregado el  "+
+                                snapshot.child("Examen").child(id).child("fechaEntrega").getValue().toString()+", con un resultado de "+
+                                snapshot.child("Examen").child(id).child("resultado").getValue().toString()+" para covid");
                     }else{
                         Date date = new Date();
                         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -147,8 +143,8 @@ public class UserSintomas extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         int dias=(int) ((fechaActual.getTime()-fechaExam.getTime())/86400000);
-                     txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", no ha sido entregado y" +
-                             " lleva en revisión "+ dias+ " días");
+                        txt_examen.setText("El usuario tomó el examen el "+ snapshot.child("Examen").child(id).child("fecha").getValue().toString()+", no ha sido entregado y" +
+                                " lleva en revisión "+ dias+ " días");
                     }
                 }else {
                     txt_examen.setText("El usuario no ha tomado el examen");

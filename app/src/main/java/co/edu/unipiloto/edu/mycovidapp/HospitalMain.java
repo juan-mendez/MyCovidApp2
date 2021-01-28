@@ -126,7 +126,7 @@ public class HospitalMain extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot ds: snapshot.getChildren()){
                                 if(ds.child("PersonalInfo").child("name").getValue().toString().equals(txt_consul.getText().toString())){
-                                   cedula= ds.child("PersonalInfo").child("cedula").getValue().toString();
+                                    cedula= ds.child("PersonalInfo").child("cedula").getValue().toString();
                                     startActivity(new Intent(HospitalMain.this, UserSintomas.class).putExtra("cedula",cedula));
                                 }
                             }
@@ -142,7 +142,7 @@ public class HospitalMain extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 startActivity(new Intent(getApplicationContext(),UserSintomas.class).putExtra("cedula",cedulas.get(position)));
-                Toast.makeText(HospitalMain.this, "Has pulsado: "+ cedulas.get(position), Toast.LENGTH_LONG).show();
+                // Toast.makeText(HospitalMain.this, "Has pulsado: "+ cedulas.get(position), Toast.LENGTH_LONG).show();
             }
         });
     }
