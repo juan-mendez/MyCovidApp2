@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HospitalMain extends AppCompatActivity {
-    private   Button btn_Users;
-    private   Button btn_Consultar;
+    private Button btn_Users;
+    private Button btn_Consultar;
     private Button btn_search;
     private EditText txt_consul;
     private ListView listUsers;
@@ -42,7 +42,9 @@ public class HospitalMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_main);
+
         db = FirebaseDatabase.getInstance().getReference();
+
         txt_consul=(EditText)findViewById(R.id.txt_consul);
         btn_search=(Button)findViewById(R.id.btn_search);
         btn_Users=(Button)findViewById(R.id.btn_Users);
@@ -67,18 +69,12 @@ public class HospitalMain extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     cedulas.add(ds.child("PersonalInfo").child("cedula").getValue().toString());
                 }
-
                 //cedulas.add(snapshot.child("PBkf6G1Wo7TTchA9OZXkv28ysFB2").child("PersonalInfo").child("cedula").getValue().toString());
                 ArrayAdapter<String>listAdapter= new ArrayAdapter<String>(HospitalMain.this, android.R.layout.simple_list_item_1,cedulas);
                 listUsers.setAdapter(listAdapter);
-
-
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            @Override public void onCancelled(@NonNull DatabaseError error) { }
         });
 
 
@@ -133,17 +129,10 @@ public class HospitalMain extends AppCompatActivity {
                                    cedula= ds.child("PersonalInfo").child("cedula").getValue().toString();
                                     startActivity(new Intent(HospitalMain.this, UserSintomas.class).putExtra("cedula",cedula));
                                 }
-
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
+                        @Override public void onCancelled(@NonNull DatabaseError error) { }
                     });
-
-
                 }
             }
         });
@@ -162,10 +151,9 @@ public class HospitalMain extends AppCompatActivity {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>(){
             public void onComplete(@NonNull Task<Void> task) {
                 Intent intent= new Intent(getApplicationContext(),LoginActivity.class);
-
                 startActivity(intent);
-                finish();            }
+                finish();
+            }
         });
-
     }
 }

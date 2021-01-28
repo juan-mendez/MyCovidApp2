@@ -37,6 +37,7 @@
         <activity android:name=".TomaDeDecisionesMain" />
         <activity android:name=".HospitalMain" />
         <activity android:name=".UsersData" />
+        <activity android:name=".RastreoMain"/>
 
         <activity
             android:name=".MapsActivity1"

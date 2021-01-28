@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class SeguimientoDeContagiosMain extends AppCompatActivity {
     private Button btn_salir;
-    private   Button btn_Users;
-    private   Button btn_Consultar;
+    private Button btn_Users;
+    private Button btn_Consultar;
     private Button btn_search;
     private EditText txt_consul;
     private ListView listUsersContagiados;
@@ -47,7 +47,6 @@ public class SeguimientoDeContagiosMain extends AppCompatActivity {
         cedulas= new ArrayList<String>();
 
         btn_salir= (Button) findViewById(R.id.btn_salirS);
-
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,21 +67,10 @@ public class SeguimientoDeContagiosMain extends AppCompatActivity {
                         cedulas.add(ds.child("PersonalInfo").child("cedula").getValue().toString());
                     }
                 }
-
-
-
                 ArrayAdapter<String> listAdapter= new ArrayAdapter<String>(SeguimientoDeContagiosMain.this, android.R.layout.simple_list_item_1,cedulas);
                 listUsersContagiados.setAdapter(listAdapter);
-
-
-
-
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            @Override public void onCancelled(@NonNull DatabaseError error) { }
         });
 
 
@@ -97,7 +85,6 @@ public class SeguimientoDeContagiosMain extends AppCompatActivity {
                     btn_search.setVisibility(View.INVISIBLE);
                     listUsersContagiados.setVisibility(View.VISIBLE);
                 }
-
                 // Toast.makeText(HospitalMain.this, "esta "+ listUsers.getVisibility(), Toast.LENGTH_LONG).show();
             }
         });
@@ -114,7 +101,6 @@ public class SeguimientoDeContagiosMain extends AppCompatActivity {
                     btn_search.setVisibility(View.VISIBLE);
                     listUsersContagiados.setVisibility(View.INVISIBLE);
                 }
-
                 // Toast.makeText(HospitalMain.this, "esta "+ txt_consual.getVisibility(), Toast.LENGTH_LONG).show();
             }
         });
@@ -133,8 +119,8 @@ public class SeguimientoDeContagiosMain extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(),LoginActivity.class);
 
                 startActivity(intent);
-                finish();            }
+                finish();
+            }
         });
-
     }
 }
