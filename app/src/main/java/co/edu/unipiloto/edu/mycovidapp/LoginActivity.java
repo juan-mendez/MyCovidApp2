@@ -22,13 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 
-import co.edu.unipiloto.edu.mycovidapp.HospitalMain;
-import co.edu.unipiloto.edu.mycovidapp.MainActivity;
-import co.edu.unipiloto.edu.mycovidapp.R;
-import co.edu.unipiloto.edu.mycovidapp.SeguimientoDeContagiosMain;
-import co.edu.unipiloto.edu.mycovidapp.TomaDeDecisionesMain;
-import co.edu.unipiloto.edu.mycovidapp.UsersData;
-
 public class LoginActivity extends AppCompatActivity {
     SignInButton btn_login;
     LoginButton btn_loginFa;
@@ -77,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this,"Bienvenid@ ${user!!.displayname}",Toast.LENGTH_LONG).show();
 
-                db.addValueEventListener(new ValueEventListener() {
+                db.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.child("Entidades").child(user.getUid()).exists())
