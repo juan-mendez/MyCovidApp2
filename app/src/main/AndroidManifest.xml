@@ -36,6 +36,10 @@
         <activity android:name=".SeguimientoDeContagiosMain" />
         <activity android:name=".HospitalMain" />
         <activity android:name=".UsersData" />
+        <activity android:name=".LocalidadInfo"></activity>
+        <activity android:name=".UsuariosContagiados" />
+        <activity android:name=".TomaDeDecisionesMain" />
+
 
         <activity
             android:name=".MapsActivity1"
