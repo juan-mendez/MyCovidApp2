@@ -15,6 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UsuariosContagiados extends AppCompatActivity {
     private ListView listUsuariosContagiados;
@@ -47,7 +49,18 @@ public class UsuariosContagiados extends AppCompatActivity {
                         }
                     }
 
+                    Map<String,Object> maplocalidad=new HashMap<>();
 
+                    maplocalidad.put("totalUsuarios",cedulas.size());
+                    maplocalidad.put("totalContagiados",cedulasPositivas.size());
+                    maplocalidad.put("taza",cedulasPositivas.size()*100/cedulas.size()+"%");
+                    if (snapshot.child("Localidades").child(localidad).exists()){
+                    maplocalidad.put("estado",snapshot.child("Localidades").child(localidad).child("estado").getValue().toString());
+                    }else{
+                        maplocalidad.put("estado",0);
+                    }
+
+                    db.child("Localidades").child(localidad).setValue(maplocalidad);
                     ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(UsuariosContagiados.this, android.R.layout.simple_list_item_1, cedulas);
                     listUsuariosContagiados.setAdapter(listAdapter);
                 }

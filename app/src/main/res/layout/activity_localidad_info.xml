@@ -28,7 +28,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" Localidad: "
                 android:textColor="#FFFFFF"
                 android:textColorHint="#A9FBF8F8" />
 
@@ -45,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" Usuarios:"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#A9FBF8F8" />
 
@@ -62,7 +60,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" Usuarios Positivos:"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#A9FBF8F8" />
 
@@ -79,7 +76,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" Taza de Contagios:"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#A9FBF8F8" />
 
@@ -114,8 +110,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border"
-                android:hint="Estado"
-                android:text=" Estado:"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#A6FFFFFF" />
         </LinearLayout>
